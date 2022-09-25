@@ -8,8 +8,8 @@ import { UserService } from 'src/app/user.service';
 })
 export class FormsComponent implements OnInit {
  user={
-   Username:"",
-   Password:""
+   username:"",
+   password:""
 }
 
   save(){
