@@ -1,0 +1,31 @@
+<head>
+    <link rel="stylesheet" href="bookform.component.css" type="text/css">
+</head>
+<h1>Create Book Form</h1>
+<body>
+    
+<form name="CreatebookForm" class="CreatebookForm">
+    <div class="CreatebookContainer">
+        <label>author</label>
+        <input type="text" [(ngModel)]="book.author" name="author"> <br>
+        <label>title</label>
+        <input type="text" [(ngModel)]="book.title" name="title"> <br>
+        <label>category</label>
+        <input type="text" [(ngModel)]="book.category" name="category"> <br>
+        <label>image</label>
+        <input type="text" [(ngModel)]="book.image" name="image"> <br>
+        <label>price</label>
+        <input type="text" [(ngModel)]="book.price" name="price"> <br>
+        <label>publisher</label>
+        <input type="text" [(ngModel)]="book.publisher" name="publisher"> <br>
+        <label>active</label>
+        <input type="text" [(ngModel)]="book.active" name="active"> <br>
+        <label>content</label>
+        <input type="text" [(ngModel)]="book.content" name="content"> <br>
+        <label>publisheddate</label>
+        <input type="date" [(ngModel)]="book.publisheddate" name="publisheddate"> <br>
+        <button class='btn btn-primary' type="button" (click)="create()"> Create Book</button>
+    </div>
+
+</form>
+</body>

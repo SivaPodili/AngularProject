@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/user.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-forms',
@@ -7,27 +9,38 @@ import { UserService } from 'src/app/user.service';
   styleUrls: ['./forms.component.css']
 })
 export class FormsComponent implements OnInit {
- user={
-   username:"",
-   password:""
-}
+  user = {
+    username: "",
+    password: ""
+  }
+  angForm: FormGroup;
 
-  save(){
+  save() {
     // console.log(this.Username);
     // console.log(this.Password)
-    const observable=this.userService.createUser(this.user);
+    this.angForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+    const observable = this.userService.signinUser(this.user);
     observable.subscribe(
-      (Response:any)=>{
+      (Response: any) => {
         console.log(Response);
+        alert("User Successfully Signed")
+        sessionStorage.setItem('credentials', JSON.stringify(Response));
+       // this.router.navigate(['createbook']);
+
       },
-      function(error){
-        alert("Something went wrong Please try again")
+      function (error) {
+        alert("Please Signin");
       }
-      )
-      
+    )
+
   }
 
-  constructor(private userService:UserService) { }
+  constructor(private userService: UserService, private router: Router, private fb: FormBuilder) {
+    this.save();
+  }
 
   ngOnInit(): void {
   }
